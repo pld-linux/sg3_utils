@@ -1,12 +1,12 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl):	Programy narzêdziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
-Version:	1.05
+Version:	1.06
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://www.torque.net/sg/p/%{name}-%{version}.tgz
-# Source0-md5:	1ec2a247dc347a0e649713e2cecb8fb6
+# Source0-md5:	84e61832f5c924c264d83876bd43be98
 Patch0:		%{name}-make.patch
 URL:		http://www.torque.net/sg/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
