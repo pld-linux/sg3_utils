@@ -1,0 +1,32 @@
+--- sg3_utils-1.05/Makefile.orig	2003-04-30 13:05:20.000000000 +0200
++++ sg3_utils-1.05/Makefile	2003-09-04 22:37:41.681733912 +0200
+@@ -1,8 +1,8 @@
+ SHELL = /bin/sh
+ 
+ PREFIX=/usr/local
+-INSTDIR=$(DESTDIR)/$(PREFIX)/bin
+-MANDIR=$(DESTDIR)/$(PREFIX)/man
++BINDIR=$(PREFIX)/bin
++MANDIR=$(PREFIX)/man
+ 
+ CC = gcc
+ LD = gcc
+@@ -90,14 +90,13 @@
+ 	$(LD) -o $@ $(LDFLAGS) $^
+ 
+ install: $(EXECS)
+-	install -d $(INSTDIR)
++	install -d $(DESTDIR)$(BINDIR)
+ 	for name in $^; \
+-	 do install -s -o root -g root -m 755 $$name $(INSTDIR); \
++	 do install -m 755 $$name $(DESTDIR)$(BINDIR); \
+ 	done
+-	install -d $(MANDIR)/$(MAN_PREF)
++	install -d $(DESTDIR)$(MANDIR)/$(MAN_PREF)
+ 	for mp in $(MAN_PGS); \
+-	 do install -o root -g root -m 644 $$mp $(MANDIR)/$(MAN_PREF); \
+-	 gzip -9f $(MANDIR)/$(MAN_PREF)/$$mp; \
++	 do install -m 644 $$mp $(DESTDIR)$(MANDIR)/$(MAN_PREF); \
+ 	done
+ 
+ uninstall:
