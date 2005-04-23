@@ -1,5 +1,5 @@
---- sg3_utils-1.11/Makefile.orig	2004-11-02 05:38:23.000000000 +0100
-+++ sg3_utils-1.11/Makefile	2004-11-06 19:47:21.534695480 +0100
+--- sg3_utils-1.14/Makefile.orig	2005-03-29 03:55:07.000000000 +0200
++++ sg3_utils-1.14/Makefile	2005-04-24 01:26:48.878142192 +0200
 @@ -1,10 +1,10 @@
  SHELL = /bin/sh
  
@@ -15,7 +15,16 @@
  
  CC = gcc
  LD = gcc
-@@ -139,21 +139,20 @@
+@@ -23,7 +23,7 @@
+ 	sg_opcodes.8 sg_persist.8 sg_write_long.8 sg_read_long.8 \
+ 	sg_requests.8 sg_ses.8 sg_verify.8 sg_emc_trespass.8 \
+ 	sg_luns.8 sg_sync.8 sg_prevent.8 sg_get_config.8 sg_wr_mode.8 \
+-	sg_rtpg.8 sg_reassign.8 sg_format.8 sg_rmsn sdparm.8
++	sg_rtpg.8 sg_reassign.8 sg_format.8 sg_rmsn.8 sdparm.8
+ MAN_PREF = man8
+ 
+ HEADERS = sg_lib.h sg_cmds.h
+@@ -179,21 +179,20 @@
  	libtool --mode=link $(LD) -o $@ $(LDFLAGS) $^
  
  install: $(EXECS)
@@ -26,22 +35,21 @@
 +	install -d $(DESTDIR)$(LIBDIR)
 +	libtool --mode=install install -c libsgutils.la $(DESTDIR)$(LIBDIR)/libsgutils.la
  	for name in $^; \
--	 do libtool --mode=install install -s -o root -g root -m 755 \
+ 	 do libtool --mode=install install -m 755 \
 -		$$name $(INSTDIR); \
-+	 do libtool --mode=install install -m 755 \
 +		$$name $(DESTDIR)$(INSTDIR); \
  	done
 -	install -d $(MANDIR)/$(MAN_PREF)
 +	install -d $(DESTDIR)$(MANDIR)/$(MAN_PREF)
  	for mp in $(MAN_PGS); \
--	 do install -o root -g root -m 644 $$mp $(MANDIR)/$(MAN_PREF); \
+-	 do install -m 644 $$mp $(MANDIR)/$(MAN_PREF); \
 -	 gzip -9f $(MANDIR)/$(MAN_PREF)/$$mp; \
 +	 do install -m 644 $$mp $(DESTDIR)$(MANDIR)/$(MAN_PREF); \
  	done
 -	install -d $(INCLUDEDIR)/scsi
 +	install -d $(DESTDIR)$(INCLUDEDIR)/scsi
  	for hdr in $(HEADERS); \
--	 do install -o root -g root -m 644 $$hdr $(INCLUDEDIR)/scsi ; \
+-	 do install -m 644 $$hdr $(INCLUDEDIR)/scsi ; \
 +	 do install -m 644 $$hdr $(DESTDIR)$(INCLUDEDIR)/scsi ; \
  	done
  
