@@ -1,5 +1,5 @@
---- sg3_utils-1.14/Makefile.orig	2005-03-29 03:55:07.000000000 +0200
-+++ sg3_utils-1.14/Makefile	2005-04-24 01:26:48.878142192 +0200
+--- sg3_utils-1.15/Makefile.orig	2005-03-29 03:55:07.000000000 +0200
++++ sg3_utils-1.15/Makefile	2005-04-24 01:26:48.878142192 +0200
 @@ -1,10 +1,10 @@
  SHELL = /bin/sh
  
@@ -15,15 +15,6 @@
  
  CC = gcc
  LD = gcc
-@@ -23,7 +23,7 @@
- 	sg_opcodes.8 sg_persist.8 sg_write_long.8 sg_read_long.8 \
- 	sg_requests.8 sg_ses.8 sg_verify.8 sg_emc_trespass.8 \
- 	sg_luns.8 sg_sync.8 sg_prevent.8 sg_get_config.8 sg_wr_mode.8 \
--	sg_rtpg.8 sg_reassign.8 sg_format.8 sg_rmsn sdparm.8
-+	sg_rtpg.8 sg_reassign.8 sg_format.8 sg_rmsn.8 sdparm.8
- MAN_PREF = man8
- 
- HEADERS = sg_lib.h sg_cmds.h
 @@ -179,21 +179,20 @@
  	libtool --mode=link $(LD) -o $@ $(LDFLAGS) $^
  
