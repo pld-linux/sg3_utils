@@ -1,16 +1,16 @@
---- sg3_utils-1.15/Makefile.orig	2005-03-29 03:55:07.000000000 +0200
-+++ sg3_utils-1.15/Makefile	2005-04-24 01:26:48.878142192 +0200
+--- sg3_utils-1.16/Makefile.orig	2005-03-29 03:55:07.000000000 +0200
++++ sg3_utils-1.16/Makefile	2005-04-24 01:26:48.878142192 +0200
 @@ -1,10 +1,10 @@
  SHELL = /bin/sh
  
  PREFIX=/usr/local
 -LIBDIR=$(DESTDIR)/$(PREFIX)/lib
 -INSTDIR=$(DESTDIR)/$(PREFIX)/bin
--MANDIR=$(DESTDIR)/$(PREFIX)/man
+-MANDIR=$(DESTDIR)/$(PREFIX)/share/man
 -INCLUDEDIR=$(DESTDIR)/$(PREFIX)/include
 +LIBDIR=$(PREFIX)/lib
 +INSTDIR=$(PREFIX)/bin
-+MANDIR=$(PREFIX)/man
++MANDIR=$(PREFIX)/share/man
 +INCLUDEDIR=$(PREFIX)/include
  
  CC = gcc
