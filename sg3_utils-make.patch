@@ -1,5 +1,5 @@
---- sg3_utils-1.16/Makefile.orig	2005-03-29 03:55:07.000000000 +0200
-+++ sg3_utils-1.16/Makefile	2005-04-24 01:26:48.878142192 +0200
+--- sg3_utils-1.19/Makefile.orig	2005-12-27 05:47:53.000000000 +0100
++++ sg3_utils-1.19/Makefile	2005-12-28 19:42:43.165757048 +0100
 @@ -1,10 +1,10 @@
  SHELL = /bin/sh
  
@@ -15,16 +15,18 @@
  
  CC = gcc
  LD = gcc
-@@ -179,21 +179,20 @@
+@@ -187,22 +187,21 @@
  	libtool --mode=link $(LD) -o $@ $(LDFLAGS) $^
  
  install: $(EXECS)
 -	install -d $(INSTDIR)
 -	install -d $(LIBDIR)
 -	libtool --mode=install install -c libsgutils.la $(LIBDIR)/libsgutils.la
+-	libtool --finish $(LIBDIR)
 +	install -d $(DESTDIR)$(INSTDIR)
 +	install -d $(DESTDIR)$(LIBDIR)
 +	libtool --mode=install install -c libsgutils.la $(DESTDIR)$(LIBDIR)/libsgutils.la
++	libtool --finish $(DESTDIR)$(LIBDIR)
  	for name in $^; \
  	 do libtool --mode=install install -m 755 \
 -		$$name $(INSTDIR); \
