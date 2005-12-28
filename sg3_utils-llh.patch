@@ -1,0 +1,13 @@
+--- sg3_utils-1.19/sg_inq.c.orig	2005-12-26 12:11:21.000000000 +0100
++++ sg3_utils-1.19/sg_inq.c	2005-12-28 19:59:53.048191120 +0100
+@@ -2150,8 +2150,8 @@
+ }
+ #else
+ 
+-static int try_ata_identify(int ata_fd __unused, int do_hex __unused,
+-                            int do_raw __unused, int do_verbose __unused)
++static int try_ata_identify(int ata_fd __attribute__((unused)), int do_hex __attribute__((unused)),
++                            int do_raw __attribute__((unused)), int do_verbose __attribute__((unused)))
+ {
+     return -1;
+ }
