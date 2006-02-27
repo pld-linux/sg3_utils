@@ -1,14 +1,13 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl):	Programy narzêdziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
-Version:	1.19
+Version:	1.20
 Release:	1
 License:	GPL (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.torque.net/sg/p/%{name}-%{version}.tgz
-# Source0-md5:	49901944d4663400d178ec5420a9b9a9
+# Source0-md5:	40e59e3a0ce4081aa0619ac875eab2bd
 Patch0:		%{name}-make.patch
-Patch1:		%{name}-llh.patch
 URL:		http://sg.torque.net/sg/
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -52,7 +51,6 @@ Statyczna wersja biblioteki sgutils.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__make} \
