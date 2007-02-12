@@ -1,5 +1,5 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
-Summary(pl):	Programy narzêdziowe i testowe dla linuksowego sterownika sg w wersji 3
+Summary(pl.UTF-8):   Programy narzÄ™dziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
 Version:	1.23
 Release:	1
@@ -17,14 +17,14 @@ This package contains some utilities and test programs for the Linux
 sg (version 3) device driver. This driver is found in the Linux 2.4+
 kernels.
 
-%description -l pl
-Ten pakiet zawiera trochê programów narzêdziowych i testowych dla
-sterownika urz±dzeñ sg w wersji 3. Ten sterownik jest obecny w j±drach
+%description -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ programÃ³w narzÄ™dziowych i testowych dla
+sterownika urzÄ…dzeÅ„ sg w wersji 3. Ten sterownik jest obecny w jÄ…drach
 Linuksa 2.4+.
 
 %package devel
 Summary:	Header files for sgutils library
-Summary(pl):	Pliki nag³ówkowe biblioteki sgutils
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki sgutils
 License:	BSD
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
@@ -32,12 +32,12 @@ Requires:	%{name} = %{version}-%{release}
 %description devel
 Header files for sgutils library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki sgutils.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki sgutils.
 
 %package static
 Summary:	Static sgutils library
-Summary(pl):	Statyczna biblioteka sgutils
+Summary(pl.UTF-8):   Statyczna biblioteka sgutils
 License:	BSD
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
@@ -45,7 +45,7 @@ Requires:	%{name}-devel = %{version}-%{release}
 %description static
 Static version of sgutils library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna wersja biblioteki sgutils.
 
 %prep
