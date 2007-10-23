@@ -1,15 +1,13 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
-Version:	1.24
+Version:	1.25
 Release:	1
 License:	GPL (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.torque.net/sg/p/%{name}-%{version}.tgz
-# Source0-md5:	8ca3f643057855bf98b9487f96ea486c
-Patch0:		%{name}-make.patch
+# Source0-md5:	9fec4d8f3f6c8b3d2da79fc17cc2d387
 URL:		http://sg.torque.net/sg/
-BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -50,23 +48,16 @@ Statyczna wersja biblioteki sgutils.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{__make} \
-	CC="%{__cc}" \
-	LD="%{__cc}" \
-	CFLAGS="%{rpmcflags} -Wall -D_REENTRANT \$(LARGE_FILE_FLAGS)" \
-	LDFLAGS="%{rpmldflags}" \
-	LIBDIR=%{_libdir}
+%configure
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	PREFIX=%{_prefix} \
-	LIBDIR=%{_libdir}
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -76,17 +67,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGELOG COVERAGE CREDITS README*
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
-%{_mandir}/man8/*.8*
+%doc COPYING COVERAGE CREDITS ChangeLog README README.sg_start
+%attr(755,root,root) %{_bindir}/sg*
+%attr(755,root,root) %{_libdir}/libsgutils.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsgutils.so.1
+%{_mandir}/man8/sg*.8*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libsgutils.so
+%{_libdir}/libsgutils.la
 %{_includedir}/scsi/sg_*.h
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libsgutils.a
