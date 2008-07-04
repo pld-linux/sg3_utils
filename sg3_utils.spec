@@ -8,6 +8,8 @@ Group:		Applications/System
 Source0:	http://sg.torque.net/sg/p/%{name}-%{version}.tgz
 # Source0-md5:	9a7aa8d954d75dc6c91e066e215867f2
 URL:		http://sg.torque.net/sg/
+Provides:	sg_utils
+Obsoletes:	sg_utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
