@@ -10,6 +10,7 @@ Source0:	http://sg.torque.net/sg/p/%{name}-%{version}.tgz
 URL:		http://sg.torque.net/sg/
 Provides:	sg_utils
 Obsoletes:	sg_utils
+Obsoletes:	scsiutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
