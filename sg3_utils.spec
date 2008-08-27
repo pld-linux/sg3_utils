@@ -1,8 +1,10 @@
+# NOTE: beta versions are versioned with just new version number,
+#       so check URL for final releases
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
 Version:	1.27
-Release:	1
+Release:	0.beta.1
 License:	GPL (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.torque.net/sg/p/%{name}-%{version}.tgz
