@@ -7,9 +7,9 @@ Version:	1.27
 Release:	0.beta.1
 License:	GPL (utilities), BSD (library)
 Group:		Applications/System
-Source0:	http://sg.torque.net/sg/p/%{name}-%{version}.tgz
+Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tgz
 # Source0-md5:	793231ba3e4b5a4bb2c2ddb9f1e52f4a
-URL:		http://sg.torque.net/sg/
+URL:		http://sg.danny.cz/sg/
 Provides:	sg_utils
 Obsoletes:	sg_utils
 Obsoletes:	scsiutils
