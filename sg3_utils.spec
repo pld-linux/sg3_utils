@@ -10,10 +10,13 @@ Group:		Applications/System
 Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tgz
 # Source0-md5:	de42374a6ba11258f1963134542af12c
 URL:		http://sg.danny.cz/sg/
+BuildRequires:	autoconf
 Provides:	sg_utils
-Obsoletes:	sg_utils
 Obsoletes:	scsiutils
+Obsoletes:	sg_utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%undefine	__cxx
 
 %description
 This package contains some utilities and test programs for the Linux
