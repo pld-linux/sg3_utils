@@ -3,13 +3,13 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
-Version:	1.27
+Version:	1.29
 Release:	1
 License:	GPL (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tgz
-# Source0-md5:	de42374a6ba11258f1963134542af12c
-URL:		http://sg.danny.cz/sg/
+# Source0-md5:	17b8f2bc1b32bd036515683cc87328ea
+URL:		http://sg.danny.cz/sg/sg3_utils.html
 BuildRequires:	autoconf
 Provides:	sg_utils
 Obsoletes:	scsiutils
@@ -67,6 +67,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install scripts/scsi_* $RPM_BUILD_ROOT%{_bindir}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -75,11 +77,20 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING COVERAGE CREDITS ChangeLog README README.sg_start
-%attr(755,root,root) %{_bindir}/sg*
+%doc COPYING COVERAGE CREDITS ChangeLog README README.sg_start TODO
+%attr(755,root,root) %{_bindir}/scsi_*
+%attr(755,root,root) %{_bindir}/sg_*
+%attr(755,root,root) %{_bindir}/sginfo
+%attr(755,root,root) %{_bindir}/sgm_dd
+%attr(755,root,root) %{_bindir}/sgp_dd
 %attr(755,root,root) %{_libdir}/libsgutils2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libsgutils2.so.2
-%{_mandir}/man8/sg*.8*
+%{_mandir}/man8/scsi_*.8*
+%{_mandir}/man8/sg3_utils.8*
+%{_mandir}/man8/sg_*.8*
+%{_mandir}/man8/sginfo.8*
+%{_mandir}/man8/sgm_dd.8*
+%{_mandir}/man8/sgp_dd.8*
 
 %files devel
 %defattr(644,root,root,755)
