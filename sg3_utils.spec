@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg
 Name:		sg3_utils
 Version:	1.36
 Release:	1
-License:	GPL (utilities), BSD (library)
+License:	GPL v2 (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tar.xz
 # Source0-md5:	5d1846c8aa03a2e39e1368cf05bf1cfd
