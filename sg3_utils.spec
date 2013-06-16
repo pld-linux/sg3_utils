@@ -1,12 +1,12 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
-Version:	1.35
+Version:	1.36
 Release:	1
 License:	GPL (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tar.xz
-# Source0-md5:	01600b51611388c65b6954d99197d529
+# Source0-md5:	5d1846c8aa03a2e39e1368cf05bf1cfd
 URL:		http://sg.danny.cz/sg/sg3_utils.html
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
