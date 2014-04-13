@@ -1,16 +1,19 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
-Version:	1.37
+Version:	1.38
 Release:	1
 License:	GPL v2 (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tar.xz
-# Source0-md5:	ade022cf1ece91e94865e2c68d369c79
+# Source0-md5:	ee60a79cd4eb4fa8cebb83c0e9c3707c
 URL:		http://sg.danny.cz/sg/sg3_utils.html
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+# see scripts/rescan-scsi-bus.sh /Id:
+Provides:	rescan-scsi-bus = 1.57
 Provides:	sg_utils
+Obsoletes:	rescan-scsi-bus < 1.57
 Obsoletes:	scsiutils
 Obsoletes:	sg_utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -56,6 +59,8 @@ Statyczna wersja biblioteki sgutils2.
 %prep
 %setup -q
 
+cp -p scripts/README README.scripts
+
 %build
 %configure
 %{__make}
@@ -66,7 +71,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install scripts/scsi_* $RPM_BUILD_ROOT%{_bindir}
+install scripts/rescan-scsi-bus.sh $RPM_BUILD_ROOT%{_bindir}
+
+install -d $RPM_BUILD_ROOT/lib/udev/rules.d
+install scripts/59-scsi-sg3_utils.rules $RPM_BUILD_ROOT/lib/udev/rules.d
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -76,7 +84,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS BSD_LICENSE COPYING COVERAGE CREDITS ChangeLog README README.sg_start TODO
+%doc AUTHORS BSD_LICENSE COPYING COVERAGE CREDITS ChangeLog README README.scripts README.sg_start TODO
+%attr(755,root,root) %{_bindir}/rescan-scsi-bus.sh
 %attr(755,root,root) %{_bindir}/scsi_*
 %attr(755,root,root) %{_bindir}/sg_*
 %attr(755,root,root) %{_bindir}/sginfo
@@ -84,6 +93,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/sgp_dd
 %attr(755,root,root) %{_libdir}/libsgutils2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libsgutils2.so.2
+/lib/udev/rules.d/59-scsi-sg3_utils.rules
+%{_mandir}/man8/rescan-scsi-bus.sh.8*
 %{_mandir}/man8/scsi_*.8*
 %{_mandir}/man8/sg3_utils.8*
 %{_mandir}/man8/sg_*.8*
