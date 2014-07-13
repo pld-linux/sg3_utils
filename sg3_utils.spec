@@ -1,12 +1,12 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
-Version:	1.38
+Version:	1.39
 Release:	1
 License:	GPL v2 (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tar.xz
-# Source0-md5:	ee60a79cd4eb4fa8cebb83c0e9c3707c
+# Source0-md5:	01d9a5421d778d2707f90461836c3d11
 URL:		http://sg.danny.cz/sg/sg3_utils.html
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -74,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 install scripts/rescan-scsi-bus.sh $RPM_BUILD_ROOT%{_bindir}
 
 install -d $RPM_BUILD_ROOT/lib/udev/rules.d
-install scripts/59-scsi-sg3_utils.rules $RPM_BUILD_ROOT/lib/udev/rules.d
+install scripts/*.rules $RPM_BUILD_ROOT/lib/udev/rules.d
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -93,7 +93,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/sgp_dd
 %attr(755,root,root) %{_libdir}/libsgutils2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libsgutils2.so.2
-/lib/udev/rules.d/59-scsi-sg3_utils.rules
+/lib/udev/rules.d/55-scsi-sg3_id.rules
+/lib/udev/rules.d/58-scsi-sg3_symlink.rules
 %{_mandir}/man8/rescan-scsi-bus.sh.8*
 %{_mandir}/man8/scsi_*.8*
 %{_mandir}/man8/sg3_utils.8*
