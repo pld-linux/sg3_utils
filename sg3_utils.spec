@@ -1,12 +1,12 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
-Version:	1.39
-Release:	2
+Version:	1.40
+Release:	1
 License:	GPL v2 (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tar.xz
-# Source0-md5:	01d9a5421d778d2707f90461836c3d11
+# Source0-md5:	4bfdb74d20dd1dac12150c9ba0be6120
 URL:		http://sg.danny.cz/sg/sg3_utils.html
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -76,6 +76,9 @@ install scripts/rescan-scsi-bus.sh $RPM_BUILD_ROOT%{_bindir}
 install -d $RPM_BUILD_ROOT/lib/udev/rules.d
 install scripts/*.rules $RPM_BUILD_ROOT/lib/udev/rules.d
 
+# no external dependencies
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libsgutils2.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -106,7 +109,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libsgutils2.so
-%{_libdir}/libsgutils2.la
 %{_includedir}/scsi/sg_*.h
 
 %files static
