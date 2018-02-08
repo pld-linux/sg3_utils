@@ -2,11 +2,12 @@ Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
 Version:	1.42
-Release:	1
+Release:	2
 License:	GPL v2 (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tar.xz
 # Source0-md5:	913ac2c9069d2ba44e05565a445810ab
+Patch0:		%{name}-rescan-scsi-bus.sh.patch
 URL:		http://sg.danny.cz/sg/sg3_utils.html
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz

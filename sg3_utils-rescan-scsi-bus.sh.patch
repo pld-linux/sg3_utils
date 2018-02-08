@@ -1,0 +1,11 @@
+diff -ruNp sg3_utils-1.42.orig/scripts/rescan-scsi-bus.sh sg3_utils-1.42/scripts/rescan-scsi-bus.sh
+--- sg3_utils-1.42.orig/scripts/rescan-scsi-bus.sh	2016-02-02 05:21:27.000000000 +0100
++++ sg3_utils-1.42/scripts/rescan-scsi-bus.sh	2018-02-08 12:17:16.792117671 +0100
+@@ -241,6 +241,7 @@ testonline ()
+   sg_turs /dev/$SGDEV >/dev/null 2>&1
+   RC=$?
+ 
++  ctr=0
+   # Handle in progress of becoming ready and unit attention
+   while test $RC = 2 -o $RC = 6 && test $ctr -le 30; do
+     if test $RC = 2 -a "$RMB" != "1"; then echo -n "."; let LN+=1; sleep 1
