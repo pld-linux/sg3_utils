@@ -1,12 +1,12 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
-Version:	1.42
-Release:	2
+Version:	1.45
+Release:	1
 License:	GPL v2 (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tar.xz
-# Source0-md5:	913ac2c9069d2ba44e05565a445810ab
+# Source0-md5:	3a1ba25fe7b43577de4a5c1edb018526
 Patch0:		%{name}-rescan-scsi-bus.sh.patch
 URL:		http://sg.danny.cz/sg/sg3_utils.html
 BuildRequires:	tar >= 1:1.22
@@ -95,10 +95,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/sginfo
 %attr(755,root,root) %{_bindir}/sgm_dd
 %attr(755,root,root) %{_bindir}/sgp_dd
-%attr(755,root,root) %{_libdir}/libsgutils2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libsgutils2.so.2
+%attr(755,root,root) %{_libdir}/libsgutils2-%{version}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsgutils2-%{version}.so.2
+/lib/udev/rules.d/40-usb-blacklist.rules
+/lib/udev/rules.d/54-before-scsi-sg3_id.rules
 /lib/udev/rules.d/55-scsi-sg3_id.rules
 /lib/udev/rules.d/58-scsi-sg3_symlink.rules
+/lib/udev/rules.d/59-fc-wwpn-id.rules
+/lib/udev/rules.d/59-scsi-cciss_id.rules
 %{_mandir}/man8/rescan-scsi-bus.sh.8*
 %{_mandir}/man8/scsi_*.8*
 %{_mandir}/man8/sg3_utils.8*
