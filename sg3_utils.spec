@@ -1,12 +1,12 @@
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
-Version:	1.46
-Release:	2
+Version:	1.48
+Release:	1
 License:	GPL v2 (utilities), BSD (library)
 Group:		Applications/System
 Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tar.xz
-# Source0-md5:	11854fedf831adfd39438dc5ac9202e9
+# Source0-md5:	0024393d2d2942cc081ce613d98db68a
 Patch0:		%{name}-rescan-scsi-bus.sh.patch
 URL:		http://sg.danny.cz/sg/sg3_utils.html
 BuildRequires:	tar >= 1:1.22
@@ -15,8 +15,8 @@ BuildRequires:	xz
 Provides:	rescan-scsi-bus = 1.57
 Provides:	sg_utils
 Obsoletes:	rescan-scsi-bus < 1.57
-Obsoletes:	scsiutils
-Obsoletes:	sg_utils
+Obsoletes:	scsiutils < 1.8
+Obsoletes:	sg_utils < 1.03
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %undefine	__cxx
@@ -97,6 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/sgp_dd
 %attr(755,root,root) %{_libdir}/libsgutils2-%{version}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libsgutils2-%{version}.so.2
+/lib/udev/rules.d/00-scsi-sg3_config.rules
 /lib/udev/rules.d/40-usb-blacklist.rules
 /lib/udev/rules.d/54-before-scsi-sg3_id.rules
 /lib/udev/rules.d/55-scsi-sg3_id.rules
@@ -106,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/rescan-scsi-bus.sh.8*
 %{_mandir}/man8/scsi_*.8*
 %{_mandir}/man8/sg3_utils.8*
+%{_mandir}/man8/sg3_utils_json.8*
 %{_mandir}/man8/sg_*.8*
 %{_mandir}/man8/sginfo.8*
 %{_mandir}/man8/sgm_dd.8*
