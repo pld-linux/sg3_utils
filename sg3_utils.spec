@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# static library
+
 Summary:	Utilities and test programs for the Linux sg version 3 device driver
 Summary(pl.UTF-8):	Programy narzędziowe i testowe dla linuksowego sterownika sg w wersji 3
 Name:		sg3_utils
@@ -9,6 +13,7 @@ Source0:	http://sg.danny.cz/sg/p/%{name}-%{version}.tar.xz
 # Source0-md5:	0024393d2d2942cc081ce613d98db68a
 Patch0:		%{name}-rescan-scsi-bus.sh.patch
 URL:		http://sg.danny.cz/sg/sg3_utils.html
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 # see scripts/rescan-scsi-bus.sh /Id:
@@ -63,7 +68,9 @@ Statyczna wersja biblioteki sgutils2.
 cp -p scripts/README README.scripts
 
 %build
-%configure
+%configure \
+	%{__enable_disable static_libs static}
+
 %{__make}
 
 %install
@@ -118,6 +125,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libsgutils2.so
 %{_includedir}/scsi/sg_*.h
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libsgutils2.a
+%endif
